@@ -74,7 +74,9 @@ module.exports.getProductsList = async (event) => {
 };
 
 module.exports.getProductsById = async (event) => {
-  const {productId} = JSON.parse(event.event.queryStringParameters)
+  const {id: productId} = event.queryStringParameters
+  const necessaryProduct = products.find((product) => product.id === productId) 
+
   return {
     statusCode: 200,
     headers: {
@@ -83,7 +85,7 @@ module.exports.getProductsById = async (event) => {
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
     body: JSON.stringify(
-      products.find((product) => product.id === productId)     
+        necessaryProduct
     ),
   };
 };
