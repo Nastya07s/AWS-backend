@@ -74,7 +74,7 @@ module.exports.getProductsList = async (event) => {
 };
 
 module.exports.getProductsById = async (event) => {
-  const {id: productId} = event.queryStringParameters
+  const {productId} = event.queryStringParameters
   const necessaryProduct = products.find((product) => product.id === productId) 
 
   return {
