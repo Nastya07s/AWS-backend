@@ -60,7 +60,7 @@ provider:
 
 functions:
   getProductsList:
-    handler: handler.getProductsList
+    handler: functions/getProductsList.getProductsList
     events:
       - http:
           path: products
@@ -68,18 +68,10 @@ functions:
           cors: true
 
   getProductsById:
-    handler: handler.getProductsById
+    handler: functions/getProductsById.getProductsById
     events:
       - http:
           path: products/{productId}
-          method: get
-          cors: true
-          
-  getCart:
-    handler: handler.getCart
-    events:
-      - http:
-          path: profile/cart
           method: get
           cors: true
 
