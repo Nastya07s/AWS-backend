@@ -66,12 +66,20 @@ functions:
           path: products
           method: get
           cors: true
-          
+
   getProductsById:
     handler: handler.getProductsById
     events:
       - http:
           path: products/{productId}
+          method: get
+          cors: true
+          
+  getCart:
+    handler: handler.getCart
+    events:
+      - http:
+          path: profile/cart
           method: get
           cors: true
 

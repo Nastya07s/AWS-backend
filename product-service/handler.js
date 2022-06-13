@@ -63,25 +63,38 @@ module.exports.getProductsList = async (event) => {
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-  },
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+    },
     body: JSON.stringify(
       products
     ),
   };
 };
 
-module.exports.getProductsList = async (event) => {
+module.exports.getProductsById = async (event) => {
   const {productId} = JSON.parse(event.event.queryStringParameters)
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-  },
+      "Access-Control-Allow-Headers" : "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+    },
     body: JSON.stringify(
       products.find((product) => product.id === productId)     
     ),
+  };
+};
+
+module.exports.getCart = async (event) => {
+  return {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Headers" : "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+    },
   };
 };
