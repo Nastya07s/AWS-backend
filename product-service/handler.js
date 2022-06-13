@@ -77,6 +77,15 @@ module.exports.getProductsById = async (event) => {
   const {productId} = event.queryStringParameters
   const necessaryProduct = products.find((product) => product.id === productId) 
 
+  console.log('necessaryProduct: ', necessaryProduct)
+
+  if (!necessaryProduct) {
+    return {
+      statusCode: 404,
+      body: JSON.stringify('Product not found')
+    }
+  }
+
   return {
     statusCode: 200,
     headers: {
@@ -87,7 +96,7 @@ module.exports.getProductsById = async (event) => {
     body: JSON.stringify(
         necessaryProduct
     ),
-  };
+  } 
 };
 
 module.exports.getCart = async (event) => {
